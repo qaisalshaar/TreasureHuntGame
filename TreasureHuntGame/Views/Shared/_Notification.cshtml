@@ -1,0 +1,48 @@
+﻿@{
+  // insert toastr notification
+         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ 
+
+
+    if (TempData["SuccessMessage"] != null)
+    {
+
+        // show toastr notification
+
+        // <script type="text/javascript">
+        //     toastr.success("@TempData["SuccessMessage"]","Kais Shop",{timeout:5000});
+        // </script>
+        <script type="text/javascript">
+
+            var toast = toastr.success('@TempData["SuccessMessage"]', 'Treasure Hunt Game', {
+                "positionClass": "toast-top-center",
+                "closeButton": true,
+                "progressBar": true
+            });
+
+            setTimeout(function() {
+                $("#toast-container .toast-success").css({
+                    "width": "25em",
+                    "max-width": "25em",
+                    "background-color": "#28a745",
+                  
+                });
+            }, 100); // small delay ensures toast exists
+          
+
+       </script>
+
+
+
+
+
+
+        // show TempData notification
+
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+            <strong>@TempData["SuccessMessage"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}

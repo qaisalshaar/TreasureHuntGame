@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treasure Hunt Math Game 🏆</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="game-container">
+        <h1>
+            Treasure Hunt <img src="icon/tresure.png" style="width:50px;height:50px;" alt="Treasure Chest Icon" />
+        </h1>
+
+        <div class="stats-bar">
+            <span id="player-name">Adventurer</span>
+            <span id="score">Score: 0</span>
+            <span id="hearts">Lives: ❤️❤️❤️</span>
+        </div>
+
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
+            <div class="progress-label">Start ➡️ Treasure</div>
+        </div>
+
+        <div id="game-card" class="game-card">
+            <div id="question-area" class="question-area">
+                <h2>Welcome, Adventurer!</h2>
+                <p>Enter your details to begin your quest.</p>
+
+                <div class="player-input">
+                    <label for="player-name-input">Name:</label>
+                    <input type="text" id="player-name-input" placeholder="Your Name" required>
+                    <span id="name-error" class="error-message"></span>
+                </div>
+
+                <div class="player-input">
+                    <label for="player-age-input">Age:</label>
+                    <input type="number" id="player-age-input" placeholder="Age" min="5" max="99" required>
+                    <span id="age-error" class="error-message"></span>
+                </div>
+
+                <button id="start-button">Start Quest</button>
+            </div>
+
+            <div id="feedback-message" class="feedback-message"></div>
+
+            <div id="input-area" class="input-area hidden">
+                <input type="number" id="answer-input" placeholder="Your Answer" min="0">
+                <button id="check-button">Check</button>
+            </div>
+
+            <div id="end-screen" class="end-screen hidden"></div>
+        </div>
+    </div>
+
+    <script type="module" src="~/dist/game.js"></script>
+</body>
+</html>
