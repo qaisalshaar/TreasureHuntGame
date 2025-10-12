@@ -14,8 +14,8 @@
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 500px;
+    width: 140%;
+    max-width: 700px;
     text-align: center;
 }
 
@@ -210,3 +210,10 @@ button {
     height: 20px;
     background-color: gold;
 }
+
+/*.game-input-field {
+    width: 217px;
+    height: 150px;*/
+/* Add box-sizing to ensure consistent sizing */
+/*box-sizing: border-box;
+}*/

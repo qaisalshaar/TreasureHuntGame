@@ -9,5 +9,6 @@ namespace TreasureHuntGame.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Player> Players { get; set; }
+        public DbSet<PlayerAnswer> PlayerAnswers { get; set; }
     }
 }

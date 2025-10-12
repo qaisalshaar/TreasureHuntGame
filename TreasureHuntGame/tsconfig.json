@@ -40,14 +40,5 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-
-    "lib": [ "DOM", "ES2017" ],
-
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-
-    "outDir": "wwwroot/dist"
   }
-  // "include": [ "src/**/*.ts" ]
-  //  "exclude": [ "node_modules", "wwwroot/dist" ]
 }

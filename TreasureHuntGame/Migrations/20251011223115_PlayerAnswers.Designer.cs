@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TreasureHuntGame.Data;
 
@@ -11,9 +12,11 @@ using TreasureHuntGame.Data;
 namespace TreasureHuntGame.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251011223115_PlayerAnswers")]
+    partial class PlayerAnswers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,17 +92,12 @@ namespace TreasureHuntGame.Migrations
             modelBuilder.Entity("TreasureHuntGame.Models.PlayerAnswer", b =>
                 {
                     b.HasOne("TreasureHuntGame.Models.Player", "Player")
-                        .WithMany("PlayerAnswers")
+                        .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Player");
-                });
-
-            modelBuilder.Entity("TreasureHuntGame.Models.Player", b =>
-                {
-                    b.Navigation("PlayerAnswers");
                 });
 #pragma warning restore 612, 618
         }

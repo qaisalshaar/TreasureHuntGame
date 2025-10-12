@@ -1,29 +1,160 @@
-﻿
-
-
-@{
-    Layout ="";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Treasure Hunt Math Game 🏆</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 1. Base Font Size Reduction for All Text */
+        body {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
 
+        /* 1. Base Input Sizing */
+        .game-input-field {
+            width: 217px !important;
+            height: 30px !important;
+            box-sizing: border-box;
+        }
+
+        /* 📢 CRITICAL CHANGE: Vertical Compression & Width Reduction */
+        .game-container {
+            position: relative;
+            margin: 0 auto 10px auto;
+            max-width: 60%;
+            min-width: 400px;
+            padding-top: 5px;
+        }
+
+        /* 2. BUTTON POSITIONING: Center the Players Rank button */
+        #players-rank-btn {
+            position: relative;
+            display: block;
+            margin: 0 auto 10px auto;
+            color: red;
+            padding: 4px 8px;
+            font-size: 0.8em;
+        }
+
+        /* General vertical compression for main text elements */
+        h1 {
+            margin-top: 0;
+            margin-bottom: 3px;
+            font-size: 1.5em;
+        }
+
+            h1 img {
+                width: 35px !important;
+                height: 35px !important;
+            }
+
+        .stats-bar, .progress-container {
+            margin-bottom: 5px;
+            padding: 2px 0;
+            font-size: 0.8em;
+        }
+
+        /* 3. SCREEN JUMP FIX: Flexible height */
+        #game-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 5px;
+        }
+
+        #question-area {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+            #question-area h2 {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 1.1em;
+            }
+
+            #question-area p {
+                margin-top: 3px;
+                margin-bottom: 8px;
+                font-size: 1em;
+            }
+
+            /* 4. QUESTION/ANSWER SPACING FIX: Maintains 10px gap */
+            #question-area p {
+                margin-top: 5px;
+                margin-bottom: 10px;
+                font-size: 1.4em;
+            }
+
+        #input-area {
+            margin-top: 0;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        /* 📢 CRITICAL FIX: Put Label and Input on the Same Line */
+        .player-input {
+            display: flex;
+            flex-direction: row; /* CHANGED to align items horizontally */
+            justify-content: center; /* Center the label/input pair */
+            align-items: center;
+            margin-bottom: 6px;
+            gap: 10px; /* Added gap between the label and the input box */
+        }
+
+            /* Ensure the label doesn't take up too much horizontal space */
+            .player-input label {
+                width: 70px; /* Give the label a fixed width for alignment */
+                text-align: right; /* Align the label text to the right, next to the input */
+                padding-right: 5px;
+            }
+
+        /* 6. ERROR MESSAGE ALIGNMENT FIX: Centers the error text */
+        .error-message {
+            color: red;
+            font-size: 0.7em;
+            display: block;
+            text-align: center;
+            margin-top: 3px;
+            /* Note: Error message will align below the input field, which is often desired */
+        }
+
+        #start-button {
+            padding: 6px 14px;
+            margin-top: 5px;
+        }
+
+        .btn-space {
+            margin-left: 10px; /* space from previous button */
+            margin-bottom: 20px;
+        }
+
+        #review-answers-btn
+       {
+            margin-bottom: 70px;
+            margin-top: 20px;
+        }
+
+        #next-review-btn {
+            margin-bottom: 70px;
+          /*   margin-top: 20px; */
+        }
+    </style>
 </head>
 <body>
-  
-
-  
     <div class="game-container">
 
-       @*  <button class="mb-10" asp-action="Playersrank" asp-controller="Player" style="color:red">Players Rank</button> *@
-        <button id="players-rank-btn" class="mb-10" style="color:red">Players Rank</button>
-       
-       
-       <h1>
+        <button id="players-rank-btn">Players Rank</button>
+
+        <h1>
             Treasure Hunt <img src="icon/tresure.png" style="width:50px;height:50px;" alt="Treasure Chest Icon" />
         </h1>
 
@@ -45,15 +176,30 @@
 
                 <div class="player-input">
                     <label for="player-name-input">Name:</label>
-                    <input type="text" id="player-name-input" placeholder="Your Name" required>
-                    <span id="name-error" class="error-message"></span>
+                    <input type="text" id="player-name-input" class="game-input-field" placeholder="Your Name" required>
                 </div>
+                <span id="name-error" class="error-message"></span>
 
                 <div class="player-input">
-                    <label for="player-age-input">Age:</label>
-                    <input type="number" id="player-age-input" placeholder="Age" min="5" max="99" required>
-                    <span id="age-error" class="error-message"></span>
+                    <label for="player-gender-select">Gender:</label>
+                    <select id="player-gender-select" class="game-input-field" required>
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                 </div>
+                <span id="gender-error" class="error-message"></span>
+
+                <div class="player-input">
+                    <label for="player-level-select">Level:</label>
+                    <select id="player-level-select" class="game-input-field" required>
+                        <option value="">-- Select Level --</option>
+                        <option value="1">Easy</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Hard</option>
+                    </select>
+                </div>
+                <span id="level-error" class="error-message"></span>
 
                 <button id="start-button">Start Quest</button>
             </div>
@@ -61,7 +207,7 @@
             <div id="feedback-message" class="feedback-message"></div>
 
             <div id="input-area" class="input-area hidden">
-                <input type="number" id="answer-input" placeholder="Your Answer" min="0">
+                <input type="number" id="answer-input" placeholder="Your Answer">
                 <button id="check-button">Check</button>
             </div>
 
@@ -69,6 +215,6 @@
         </div>
     </div>
 
-    <script type="module" src="~/dist/game.js"></script>
+    <script type="module" src="/dist/games.js"></script>
 </body>
 </html>

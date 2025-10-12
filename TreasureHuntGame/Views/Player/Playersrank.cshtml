@@ -12,7 +12,8 @@
                 <tr>
                     <th>Rank</th>
                     <th>Player Name</th>
-                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Level</th>
                     <th>Score</th>
                 </tr>
             </thead>
@@ -25,7 +26,8 @@
                         <tr>
                             <td>@rank</td>
                             <td>@player.FullName</td>
-                            <td>@player.Age</td>
+                            <td>@player.Gender</td>
+                            <td>@player.Level</td>
                             <td>@player.FinalScore</td>
                         </tr>
                         rank++;
@@ -34,7 +36,7 @@
                 else
                 {
                     <tr>
-                        <td colspan="4">No players found.</td>
+                        <td colspan="5">No players found.</td>
                     </tr>
                 }
             </tbody>
