@@ -305,7 +305,7 @@ function endGame() {
     html += `<button id="play-again-btn">Play Again</button>`;
     const wrongAnswers = playerAnswers.filter(a => a.playerAnswer !== a.correctAnswer);
     if (wrongAnswers.length > 0) {
-        html += `<button id="review-answers-btn" style="margin-left: 10px;">Review Your Answers</button>`;
+        html += `<button id="review-answers-btn">Review Your Answers</button>`;
     }
     endScreen.innerHTML = html;
     document.getElementById("play-again-btn")?.addEventListener("click", () => window.location.reload());
@@ -356,9 +356,7 @@ function updateLayoutBackground() {
 document.addEventListener("DOMContentLoaded", () => {
     startButton?.addEventListener("click", initializeGame);
     checkButton?.addEventListener("click", checkAnswer);
-    answerInput?.addEventListener("keydown", e => {
-        if (e.key === "Enter" && !checkButton.disabled)
-            checkAnswer();
-    });
+    answerInput?.addEventListener("keydown", e => { if (e.key === "Enter" && !checkButton.disabled)
+        checkAnswer(); });
 });
 //# sourceMappingURL=games.js.map
